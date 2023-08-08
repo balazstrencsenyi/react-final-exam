@@ -1,21 +1,24 @@
-import { useState } from "react";
+import React, { useState } from "react";
 
-const Laptops = ({ name, weight }) => {
+const Laptops = ({ brand, name, weight }) => {
   const [show, setShow] = useState(false);
 
   const toggle = () => {
     setShow(!show);
-  }
+  };
 
   return (
     <div>
       <h2>{name}</h2>
-      {show ? <p>{weight}</p> : null}
-      <button onClick={toggle}>
-      {show ? 'hide' : 'show'}
-      </button>
+      {show && (
+        <>
+          <p>Brand: {brand}</p>
+          <p>Weight: {weight}</p>
+        </>
+      )}
+      <button onClick={toggle}>{show ? "Hide" : "Show"}</button>
     </div>
   );
-}
+};
 
-  export default Laptops;
+export default Laptops;
