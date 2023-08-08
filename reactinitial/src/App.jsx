@@ -2,6 +2,12 @@ import React, { useEffect, useState } from "react";
 import LoadingMask from "./components/LoadingMask";
 import Laptops from "./components/Laptops";
 
+import '@fontsource/roboto/300.css';
+import '@fontsource/roboto/400.css';
+import '@fontsource/roboto/500.css';
+import '@fontsource/roboto/700.css';
+
+
 const url = "https://demoapi.com/api/laptop";
 
 const App = () => {
