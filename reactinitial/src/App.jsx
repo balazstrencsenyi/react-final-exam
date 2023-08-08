@@ -7,6 +7,8 @@ const url = "https://demoapi.com/api/laptop";
 const App = () => {
   const [loading, setLoading] = useState(true);
   const [laptops, setLaptops] = useState(null);
+  const [sortAscending, setSortAscending] = useState(true);
+  const [filterText, setFilterText] = useState("");
 
   useEffect(() => {
     (async () => {
@@ -17,9 +19,38 @@ const App = () => {
     })();
   }, []);
 
+  const handleSort = () => {
+    setSortAscending(!sortAscending);
+    setLaptops((prevLaptops) =>
+      prevLaptops.slice().sort((a, b) => {
+        if (sortAscending) {
+          return a.weight - b.weight; 
+        } else {
+          return b.weight - a.weight; 
+        }
+      })
+    );
+  };
+
+  const handleFilter = (event) => {
+    setFilterText(event.target.value);
+    setLaptops((prevLaptops) =>
+      prevLaptops.filter((l) =>
+        l.name.toLowerCase().includes(event.target.value.toLowerCase())
+      )
+    );
+  };
+
   return (
     <div>
       <h1>API</h1>
+      <input
+        type="text"
+        value={filterText}
+        onChange={handleFilter}
+        placeholder="Filter laptops by name"
+      />
+      <button onClick={handleSort}>Sort</button>
       {loading ? (
         <LoadingMask />
       ) : (
