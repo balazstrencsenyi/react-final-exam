@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import LoadingMask from "./components/LoadingMask";
 import Laptops from "./components/Laptops";
+import Button from '@mui/material/Button';
+import TextField from "@mui/material/TextField";
 
 import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
@@ -50,13 +52,9 @@ const App = () => {
   return (
     <div>
       <h1>API</h1>
-      <input
-        type="text"
-        value={filterText}
-        onChange={handleFilter}
-        placeholder="Filter laptops by name"
-      />
-      <button onClick={handleSort}>Sort</button>
+      <TextField id="outlined-basic" label="Filter" variant="outlined" value={filterText} onChange={handleFilter} />
+
+      <Button  variant="contained" onClick={handleSort}>Sort</Button>
       {loading ? (
         <LoadingMask />
       ) : (
