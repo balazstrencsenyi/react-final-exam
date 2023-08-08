@@ -16,7 +16,7 @@ const Laptops = ({ brand, name, weight }) => {
           <p>Weight: {weight}</p>
         </>
       )}
-      <button onClick={toggle}>{show ? "Hide" : "Show"}</button>
+      <button onClick={toggle}>{show ? "Show less" : "Show more"}</button>
     </div>
   );
 };
